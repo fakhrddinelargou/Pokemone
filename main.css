@@ -272,3 +272,38 @@
   }
 }
 
+
+
+.ani{
+    right: 0 !important;
+    transition: .3s;
+}
+
+.brands{
+
+    overflow-x: auto;
+
+}
+
+.brand{
+  animation: spin 5s infinite linear;
+}
+.brands::-webkit-scrollbar{
+    display: none;
+}
+@keyframes spin {
+    from{translate: 0 ;}
+    to{translate: 100%;}
+}
+.brand img{
+  flex: 0 0 5rem;
+}
+
+/* .home{
+    background: #0000001e;
+    background-image: url(/images/bg.png);
+    background-repeat: no-repeat;
+    height: auto;
+    background-position: center;
+    background-size: auto;
+} */

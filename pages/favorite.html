@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="text-[62.5%]">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+            rel="stylesheet">
+        <link rel="stylesheet" href="/main.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="bg-[#343240] text-white flex flex-col gap-18 font-[Poppins]">
+
+        <header class="  h-[10vh] flex justify-center items-center p-10">
+            <nav
+                class=" z-10 w-[20rem] h-[27rem]   absolute  right-0 top-50 flex flex-col items-end overflow-hidden">
+
+                <div
+                    class="menu  flex z-12 items-center justify-start pl-3 bg-gray-600 rounded-l-[10rem] w-[4rem] hover:w-[5rem] duration-300 h-[4rem] right-0 top-50">
+                    <svg width="2.5rem" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+                            fill="#ffffff"
+                            d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 320L576 320L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM576 368L384 368L384 384C384 401.7 369.7 416 352 416L288 416C270.3 416 256 401.7 256 384L256 368L64 368L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 368z" /></svg>
+                </div>
+                <div
+                    class="cardMenu absolute right-[-100%] top-0 w-[20rem] bg-gray-600 p-4 text-[1.4rem] duration-300 rounded-l-[.5rem]">
+                    <ul class="flex flex-col justify-around h-[25rem] ">
+                        <li><a
+                                class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200"
+                                href="/">Home</a></li>
+                        <li><a
+                                class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200"
+                                href="/">Guid</a></li>
+                        <li><a
+                                class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200"
+                                href="/">Favorite</a></li>
+                        <li><a
+                                class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200"
+                                href="/">My Deck</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <ul id="type-of-cards"
+                class="flex items-center gap-50 max-lg:gap-35 max-md:gap-25 max-sm:gap-15 font-medium ">
+                <!-- <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Grass</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Fire</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Water</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Bug</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Normal</li> -->
+            </ul>
+
+            <div id="order"
+                class="bg-gray-600 cursor-pointer font-semibold py-2 px-5 absolute right-10 max-[400px]:top-24 top-10 rounded-[.2rem] ">Card
+                <span id="countCards"
+                    class="absolute right-[-.5rem] top-[-.5rem] bg-red-600 w-5 h-5 flex items-center justify-center rounded-[50%] text-[.7rem]">0</span></div>
+        </header>
+        <main class=" w-full h-auto   flex items-center justify-center">
+            <section id="container-favorite"
+                class="max-[400px]:w-[90%]   grid   grid-cols-3 max-[570px]:grid-cols-2 max-[400px]:grid-cols-1 gap-y-40 gap-15 max-lg:gap-5 p-10">
+                <div class=" m-auto w-[30rem] flex items-center justify-center h-full">
+                    <svg width="50rem"  fill="gray" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+                            d="M155.8 96C123.9 96 96.9 119.4 92.4 150.9L64.6 345.2C64.2 348.2 64 351.2 64 354.3L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 354.3C576 351.3 575.8 348.2 575.4 345.2L547.6 150.9C543.1 119.4 516.1 96 484.2 96L155.8 96zM155.8 160L484.3 160L511.7 352L451.8 352C439.7 352 428.6 358.8 423.2 369.7L408.9 398.3C403.5 409.1 392.4 416 380.3 416L259.9 416C247.8 416 236.7 409.2 231.3 398.3L217 369.7C211.6 358.9 200.5 352 188.4 352L128.3 352L155.8 160z" /></svg></div>
+            </section>
+        </main>
+
+        <div id="card"
+            class=" hidden absolute  z-50 right-30 max-[400px]:right-10 top-10 max-[400px]:top-[8.5rem]  bg-[#343240] border rounded-[.5rem]  w-[50rem] max-[570px]:w-[40rem] max-[400px]:w-[28rem] h-auto p-5 flex flex-col gap-5  ">
+        </div>
+
+        <script src="/main.js"></script>
+    </body>
+</html>

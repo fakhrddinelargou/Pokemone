@@ -1,72 +1,50 @@
 <!doctype html>
-<html>
+<html class="text-[62.5%]">
   <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Press+Start+2P&family=Sansation:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-
+<link rel="stylesheet" href="/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
+<script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="bg-[#343240] text-white flex flex-col gap-18">
+  <body class="bg-[#343240] text-white flex flex-col gap-18 font-[Poppins]">
 
     <header class="  h-[10vh] flex justify-center items-center p-10">
-      <ul class="flex items-center gap-50 font-medium ">
-        <li>Mythic</li>
-        <li>Legendar</li>
-        <li>Epic</li>
-        <li>Rase</li>
-        <li>Common</li>
+      <nav class=" z-10 w-[20rem] h-[27rem]   absolute  right-0 top-50 flex flex-col items-end overflow-hidden">
+
+          <div   class="menu  flex z-12 items-center justify-start pl-3 bg-gray-600 rounded-l-[10rem] w-[4rem] hover:w-[5rem] duration-300 h-[4rem] right-0 top-50">
+              <svg width="2.5rem" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path fill="#ffffff" d="M264 112L376 112C380.4 112 384 115.6 384 120L384 160L256 160L256 120C256 115.6 259.6 112 264 112zM208 120L208 160L128 160C92.7 160 64 188.7 64 224L64 320L576 320L576 224C576 188.7 547.3 160 512 160L432 160L432 120C432 89.1 406.9 64 376 64L264 64C233.1 64 208 89.1 208 120zM576 368L384 368L384 384C384 401.7 369.7 416 352 416L288 416C270.3 416 256 401.7 256 384L256 368L64 368L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 368z"/></svg>
+            </div>
+            <div class="cardMenu absolute right-[-100%] top-0 w-[20rem] bg-gray-600 p-4 text-[1.4rem] duration-300 rounded-l-[.5rem]">
+                <ul class="flex flex-col justify-around h-[25rem] ">
+                    <li><a class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200" href="/">Home</a></li>
+                    <li><a class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200" href="/">Guid</a></li>
+                    <li><a class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200" href="/">Favorite</a></li>
+                    <li><a class="border-b border-gray-600 border-b-2 hover:border-white hover:border-b-2 duration-200" href="/">My Deck</a></li>
+                </ul>
+            </div>
+        </nav>
+      <ul id="type-of-cards" class="flex items-center gap-50 max-lg:gap-35 max-md:gap-25 max-sm:gap-15 font-medium ">
+        <!-- <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Grass</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Fire</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Water</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Bug</li>
+        <li  class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">Normal</li> -->
       </ul>
 
-      <div class="bg-gray-600 font-semibold py-2 px-5 absolute right-10 top-10 rounded-[.2rem]">Card</div>
+      <div id="order"   class="bg-gray-600 cursor-pointer font-semibold py-2 px-5 absolute right-10 max-[400px]:top-24 top-10 rounded-[.2rem] ">Card <span id="countCards" class="absolute right-[-.5rem] top-[-.5rem] bg-red-600 w-5 h-5 flex items-center justify-center rounded-[50%] text-[.7rem]">0</span></div>
     </header>
     <main class=" w-full h-auto   flex items-center justify-center">
-      <section id="container" class="grid  grid-cols-3 gap-15">
-        <!-- <div>
-            
-            <div class=" relative w-[20rem]">
-                <img class="w-full" src="/images/card-1.png" alt="card-1">
-             <p class="absolute left-16 bottom-[5.4rem] font-bold text-gray-600">1000</p> 
-
-            </div>
-            <div class="flex pt-5 justify-center gap-5">
-                <button class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[18px] py-2  w-[9rem] font-semibold cursor-pointer">Favorite</button>
-                <button  class=" border border-[#D9D9D9] text-gray-300 rounded-[2rem] tracking-[1px] text-[18px] py-2  w-[9rem] font-semibold cursor-pointer">Add To Card</button>
-            </div>
-        </div> -->
-
+      <section id="container" class="max-[400px]:w-[90%]  grid   grid-cols-3 max-[570px]:grid-cols-2 max-[400px]:grid-cols-1 gap-y-40 gap-15 max-lg:gap-5 p-10">
       </section>
     </main>
 
-    <div id="card" class="  right-30 top-10 bg-[#343240] border rounded-[.5rem]  w-[50rem] h-auto p-5 flex flex-col gap-5">
+    <div id="card" class=" hidden absolute  z-50 right-30 max-[400px]:right-10 top-10 max-[400px]:top-[8.5rem]  bg-[#343240] border rounded-[.5rem]  w-[50rem] max-[570px]:w-[40rem] max-[400px]:w-[28rem] h-auto p-5 flex flex-col gap-5  ">
     </div>
-    
-    <!-- <div class="flex gap-3 bg-gray-600 p-2 rounded-[.5rem] relative">
-      <div id="count" class="w-8 h-8 text-center flex items-center justify-center bg-red-600 rounded-[50%] font-semibold text-gray-300 absolute right-[-.9rem] top-[-.9rem]">0</div>
-      <img src="/images/card-1.png" class="w-[5rem]">
-      <div class="flex flex-col gap-3 items-start">
-        <h4 class="text-xl font-semibold tracking-[1px]">title of the card</h4>
-        <p class="text-2xl text-gray-300 font-semibold tracking-[1px]">149$</p>
-        <div class="flex items-center gap-5 ">
-          
-          <button id="plus" class="border border-gray-50 rounded-[50%]">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px"
-            viewBox="0 -960 960 960" width="24px" fill="#D9D9D9"><path
-            d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z" /></svg>
-          </button>
-          
-      <button id="minus" class="border border-gray-50 rounded-[50%]">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D9D9D9"><path d="M200-440v-80h560v80H200Z"/></svg>
-          </button>
-        </div>
-      </div>
-        <button class="text-[1rem] font-semibold text-gray-300 bg-red-600 rounded-[.2rem] py-1 px-3 mt-auto ml-auto cursor-pointer ">Order</button>
-      </div> -->
-      
     <script src="/main.js"></script>
   </body>
 </html>

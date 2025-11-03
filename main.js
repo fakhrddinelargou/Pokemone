@@ -164,12 +164,11 @@ products.forEach((item) => {
 })
 orderCard(); 
 printFavoriteCards();
-getNameOfCards()
 
 function getNameOfCards(id){
-  
   const name = id === undefined ? "All" : id 
-  console.log(name);
+if(container !== null)
+  console.log(container);
 container.innerHTML ="";
 
 const filteredProducts = productCopy.filter(el => el.power === name || name === "All"  )
@@ -266,6 +265,9 @@ localStorage.setItem('selectFavorite', JSON.stringify(selectFavorite));
 
 }
 function orderCard() {
+
+  if(card !== null){ 
+  
   card.innerHTML = "";
 
   selectCard.forEach((item) => {
@@ -307,7 +309,7 @@ function orderCard() {
 }
 document.getElementById('countCards').innerHTML = selectCard.length
 localStorage.setItem('selectCard', JSON.stringify(selectCard));
-
+}
 }
 
 function plusCard(item) {
@@ -369,12 +371,20 @@ function removeCardFromOrder() {
   localStorage.setItem('selectCard', JSON.stringify(selectCard));
   orderCard()
 }
+// console.log(order);
 
-order.addEventListener('click' , ()=>{
-  if(selectCard.length > 0)
-card.classList.toggle('hidden')
-  
-})
+if(order){
+
+  order.addEventListener('click' , ()=>{
+    if(selectCard.length > 0)
+      card.classList.toggle('hidden')
+    
+  })
+}else{
+console.log("null");
+
+
+}
 
 
 
@@ -480,7 +490,7 @@ console.log(item);
 
   removeBtn.addEventListener('click' , () =>{
 
- selectFavorite = selectFavorite.filter((el) => el.id !== item.id);
+ selectFavorite = selectFavorite.filter((el) => el.id === item.id);
 
 
 printFavoriteCards()

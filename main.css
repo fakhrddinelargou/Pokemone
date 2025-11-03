@@ -307,3 +307,7 @@
     background-position: center;
     background-size: auto;
 } */
+
+.hidden{
+  display: none;
+}

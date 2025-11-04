@@ -16,6 +16,7 @@
 
 
     :root {
+      --bg-pochite : #5e5e5e70;
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
   --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
@@ -36,7 +37,7 @@
 
   width: 71.5vw;
   height: 100vw;
-   
+
   @media screen and (min-width: 600px) {
     width: clamp(12.9vw, 61vh, 18vw);
     height: clamp(18vw, 85vh, 25.2vw);

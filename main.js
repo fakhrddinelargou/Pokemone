@@ -144,39 +144,89 @@ const products = [
     count: 1,
   },
 ];
-const typeOfCard = document.getElementById('type-of-cards')
-const types = ["Grass" , "Fire" , "Water" , "Bug" , "Normal" , "All"]
+
+//VARIABLE FOR TYPE OF POWER
+const typeOfCard = document.getElementById("type-of-cards");
+const types = ["Grass", "Fire", "Water", "Bug", "Normal", "All"];
 const card = document.getElementById("card");
+// VARIABLES FOR MENU
+const menu = document.querySelector(".menu");
+const cardMenu = document.querySelector(".cardMenu");
+// VARIABLES MARKET
 const container = document.getElementById("container");
-const containerFavorite = document.getElementById("container-favorite");
 const order = document.getElementById("order");
-let selectCard = JSON.parse(localStorage.getItem('selectCard')) || [];
-let selectFavorite = JSON.parse(localStorage.getItem('selectFavorite')) || [];
-const menu = document.querySelector('.menu');
-const cardMenu = document.querySelector('.cardMenu');
+let selectCard = JSON.parse(localStorage.getItem("selectCard")) || [];
+// VARIABLES FAVORITE
+const containerFavorite = document.getElementById("container-favorite");
+let selectFavorite = JSON.parse(localStorage.getItem("selectFavorite")) || [];
+// VARIABLES DECK
+const containerDeck = document.getElementById("container-deck");
+// VARIABLE FOR COPY OF ORIGIN ARRAY
 let productCopy = [];
+
+// DISPLAY AND HIDDEN MENU
+menu.addEventListener("click", () => {
+  cardMenu.classList.toggle("ani");
+});
+
+// HIDDEN OR DISPLAY ORDER CARDS WHAN  SELECTCARD EMPTY 
+if (order) {
+  order.addEventListener("click", () => {
+    if (selectCard.length > 0) card.classList.toggle("hidden");
+  });
+} else {
+
+}
+
+// DISPLAY TYPES
+if (typeOfCard) {
+  types.forEach((type) => {
+
+    typeOfCard.insertAdjacentHTML(
+      "beforeend",
+      `<li id="${type}" class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">${type}</li>`
+    );
+
+    selectType(type);
+  });
+}
+
+// GET BUTTONS FROM TYPE OF CARDS
+function selectType(id) {
+  const typeBtn = document.getElementById(id);
+  typeBtn.addEventListener("click", () => {
+    getNameOfCards(id);
+  });
+}
+
+// PUT PRODUCTS CONTENT IN PRODUCTCOPY
 products.forEach((item) => {
-
   productCopy.push({
-    ...item
-  })
+    ...item,
+  });
+});
 
-})
-orderCard(); 
+// CALL FUNCTIONS
+getNameOfCards();
 printFavoriteCards();
+printCards();
+orderCard();
+favoriteToDeck()
 
-function getNameOfCards(id){
-  const name = id === undefined ? "All" : id 
-if(container !== null)
-  console.log(container);
-container.innerHTML ="";
+// DISPLAY CARDS & SELECTCARD TO DECK AND FAVORITE
+function getNameOfCards(id) {
+  const name = id === undefined ? "All" : id;
+  if (container !== null) {
+    container.innerHTML = "";
 
-const filteredProducts = productCopy.filter(el => el.power === name || name === "All"  )
-  filteredProducts.forEach((items) => {
+    // FILTER CARDS ACCORDING TO HIS TYPE
+    const filteredProducts = productCopy.filter(
+      (el) => el.power === name || name === "All"
+    );
 
-
-  
-  container.innerHTML += `
+    // USE FILTERPRODUCTS ARRAY  TO DISPLAY CARDS
+    filteredProducts.forEach((items) => {
+      container.innerHTML += `
     
              <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
             
@@ -192,86 +242,71 @@ const filteredProducts = productCopy.filter(el => el.power === name || name === 
         </div>
             
             `;
-          
-});
+    });
 
+    
+//  CALL BUTTON FOR SELECTING CARD & AND PUSH THEM TO ARRAY "SELECTCARD"
+    filteredProducts.forEach((item) => {
+      const buttons = document.getElementById(`btn-add-${item.id}`);
 
+      if (buttons) {
+        buttons.addEventListener("click", () => {
+          const isExits = selectCard.some((el) => el.id === item.id);
 
+          if (!isExits) {
+            selectCard.push({
+              ...item,
+            });
+          } else {
+            selectCard = selectCard.map((el) => {
+              if (el.id === item.id) {
+                return {
+                  ...el,
+                  count: el.count + 1,
+                };
+              }
+              return el;
+            });
+          }
+          localStorage.setItem("selectCard", JSON.stringify(selectCard));
+          orderCard(item);
+        });
+      }
+    });
 
+    //  CALL BUTTON FOR SELECTING FAVORITE CARD & AND PUSH THEM TO ARRAY "SELECTFAVORITE"
+    filteredProducts.forEach((item) => {
+      const btnFavorite = document.getElementById(`btn-favorite-${item.id}`);
 
-
-// const productCopy = productCopy.filter(el => el.name === "Grass")
-
-
-filteredProducts.forEach((item) => {
-
-  
-  const buttons = document.getElementById(`btn-add-${item.id}`);
-
-if(buttons){ 
-  buttons.addEventListener("click", () => {
-    const isExits = selectCard.some((el) => el.id === item.id);
-
-    if (!isExits) {
-     
-      selectCard.push({
-        ...item
-      });
-    } else {
-      selectCard = selectCard.map((el) => {
-        if (el.id === item.id) {
-          return {
-            ...el,
-            count: el.count + 1,
-          };
+      btnFavorite.addEventListener("click", () => {
+        const isExits = selectFavorite.some((el) => el.id === item.id);
+        if (!isExits) {
+          selectFavorite.push({
+            ...item,
+          });
+        } else {
+          return selectFavorite;
         }
-        return el
+        printFavoriteCards();
+
+        localStorage.setItem("selectFavorite", JSON.stringify(selectFavorite));
       });
-    }
-localStorage.setItem('selectCard', JSON.stringify(selectCard));
-
-    orderCard(item);
-
-  });
+    
+    });
+  } else {
+    return;
   }
-});
-
-filteredProducts.forEach((item)=>{
-
-  const btnFavorite = document.getElementById(`btn-favorite-${item.id}`)
-
-btnFavorite.addEventListener('click' , ()=>{
-
-  const isExits = selectFavorite.some(el => el.id === item.id )
-if(!isExits){
-
-  selectFavorite.push({
-    ...item
-  })
-}else{
-  
-  return selectFavorite
 }
-printFavoriteCards()
-console.log(selectFavorite);
-localStorage.setItem('selectFavorite', JSON.stringify(selectFavorite));
 
-
-})
-
-
-})
-
-
-}
+// DISPLAY SELECTCARD IN CARD "CNTAINER"
 function orderCard() {
+  // MAKE SURE IF CARD IS PRESENT
+  if (card !== null) {
+    card.innerHTML = "";
 
-  if(card !== null){ 
-  
-  card.innerHTML = "";
-
-  selectCard.forEach((item) => {
-    card.innerHTML += `
+    // DISPLAY ALL CARDS
+    selectCard.forEach((item) => {
+      card.innerHTML += `
         
             <div class="flex gap-3 bg-gray-600 p-2 rounded-[.5rem] relative">
             <div id="count-${item.id}" class="w-8 h-8 text-center flex items-center justify-center bg-red-600 rounded-[50%] font-semibold text-gray-300 absolute right-[-.9rem] top-[-.9rem]">${item.count}</div>
@@ -297,32 +332,32 @@ function orderCard() {
 
             
             `;
-  });
-  selectCard.forEach((item) => {
-    plusCard(item);
-    minusCard(item);
-  });
+    });
+    // PUSH SELECTCARD ELEMENTS TO FUNCTIONS PLUSCARD & MINUSCARD
+    selectCard.forEach((item) => {
+      plusCard(item);
+      minusCard(item);
+    });
+// HIDDEN AUTOMATIQUELLY ORDER CARDS WHAN  SELECTCARD EMPTY 
+    if (selectCard.length <= 0) {
+      card.classList.add("hidden");
+    }
+    // PUT MANY CARDS WE HAVE TO COUNTCARDS 
+    document.getElementById("countCards").innerHTML = selectCard.length;
+    localStorage.setItem("selectCard", JSON.stringify(selectCard));
+  }
+}
 
-  if(selectCard.length <= 0){
-  card.classList.add('hidden')
-  
-}
-document.getElementById('countCards').innerHTML = selectCard.length
-localStorage.setItem('selectCard', JSON.stringify(selectCard));
-}
-}
-
+// CONTROL PLUS BUTTON 
 function plusCard(item) {
+  // GET ALL PLUS BUTTONS 
   const btnPlus = document.getElementById(`plus-${item.id}`);
-
 
   btnPlus.addEventListener("click", () => {
     selectCard = selectCard.map((el) => {
       if (el.id === item.id) {
         const newCount = el.count + 1;
-
         document.getElementById(`count-${item.id}`).innerHTML = newCount;
-
         return {
           ...el,
           count: newCount,
@@ -330,14 +365,16 @@ function plusCard(item) {
       }
       return el;
     });
-    orderCard()
-  removeCardFromOrder()
-  localStorage.setItem('selectCard', JSON.stringify(selectCard));
-
+    // RENDERING NEW UPDATE
+    orderCard();
+    removeCardFromOrder();
+    localStorage.setItem("selectCard", JSON.stringify(selectCard));
   });
 }
 
+// CONTROL MINUS BUTTON
 function minusCard(item) {
+  // GET ALL MINUS BUTTONS 
   const btnMinus = document.getElementById(`minus-${item.id}`);
 
   btnMinus.addEventListener("click", () => {
@@ -355,100 +392,38 @@ function minusCard(item) {
         return el;
       }
     });
-    orderCard()
-  removeCardFromOrder()
+    // GET ALL PLUS BUTTONS 
+    orderCard();
+    removeCardFromOrder();
   });
-  
- 
-  
 }
 
+// REMOVE CARD FROM SELECTCARD ARRAY
 function removeCardFromOrder() {
- 
-  
   selectCard = selectCard.filter((item) => item.count >= 1);
- 
-  localStorage.setItem('selectCard', JSON.stringify(selectCard));
-  orderCard()
-}
-// console.log(order);
-
-if(order){
-
-  order.addEventListener('click' , ()=>{
-    if(selectCard.length > 0)
-      card.classList.toggle('hidden')
-    
-  })
-}else{
-console.log("null");
-
-
+  localStorage.setItem("selectCard", JSON.stringify(selectCard));
+  orderCard();
 }
 
+// DISPLAY FAVORITE CARDS 
+function printFavoriteCards() {
 
-
-
-
-
-menu.addEventListener('click', () => {
-cardMenu.classList.toggle('ani')
-});
-
-
-
-
-types.forEach((type) =>{
-
-
-  typeOfCard.insertAdjacentHTML(
-    "beforeend",
-    `<li id="${type}" class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">${type}</li>`
-  );
-
-
-selectType(type)
-
-
-})
-
-
-function selectType(id){
-
+  // GET ALL ELEMENT FROM FAVORITE FUNCTION TO DECK FUNCTION
+favoriteToDeck();
   
-  const typeBtn = document.getElementById(id)
-  
-  typeBtn.addEventListener('click' , ()=>{
-    
-getNameOfCards(id)
-
-
-  })
-
-}
-
-
-
-// FAVORITE CARD
-// console.log(containerFavorite);
-
-function printFavoriteCards(){
-  if(selectFavorite.length !== 0){
-
-  
-
-  if(!containerFavorite){
-
-return ;
-
+  // CHECK CONTAINER FAVORITE IF PRESENT
+  if (!containerFavorite) {
+    return;
   }
 
-containerFavorite.innerHTML ="";
+  // CHECK MANY FAVORITE CARDS
+  if (selectFavorite.length !== 0) {
 
-selectFavorite.forEach((items) => {
-  
+    containerFavorite.innerHTML = "";
 
-  containerFavorite.innerHTML += `
+    // DISPLAY ALL FAVORITE CARDS
+    selectFavorite.forEach((items) => {
+      containerFavorite.innerHTML += `
   
   
   
@@ -473,49 +448,108 @@ selectFavorite.forEach((items) => {
   
   
   
-  `
+  `;
+    });
 
+// REMOVE CARD FROM FAVORIRE
+    selectFavorite.forEach((item) => {
+      const removeBtn = document.getElementById(`btn-remove-${item.id}`);
+        // CHECK REMOVE BUTTON IF PRESENT
+      if (!removeBtn) {
+        return;
+      }
+      removeBtn.addEventListener("click", () => {
+        selectFavorite = selectFavorite.filter((el) => el.id !== item.id);
+        printFavoriteCards();
+        localStorage.setItem("selectFavorite", JSON.stringify(selectFavorite));
+      });
+    });
 
+  } else {
 
-})
+    containerFavorite.innerHTML = `
+   <div class=" font-[Sansation]  absolute m-auto inset-0  w-[30rem] flex flex-col items-center justify-center h-full">
+                    <svg width="30rem"  fill="gray" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+                            d="M155.8 96C123.9 96 96.9 119.4 92.4 150.9L64.6 345.2C64.2 348.2 64 351.2 64 354.3L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 354.3C576 351.3 575.8 348.2 575.4 345.2L547.6 150.9C543.1 119.4 516.1 96 484.2 96L155.8 96zM155.8 160L484.3 160L511.7 352L451.8 352C439.7 352 428.6 358.8 423.2 369.7L408.9 398.3C403.5 409.1 392.4 416 380.3 416L259.9 416C247.8 416 236.7 409.2 231.3 398.3L217 369.7C211.6 358.9 200.5 352 188.4 352L128.3 352L155.8 160z" />
+                            </svg>
 
-selectFavorite.forEach((item) =>{
-console.log(item);
+                                <p class="text-[gray] text-6xl font-semibold">No Favorite Card</p>
+                        </div>
+  `;
+  }
+}
 
-  const removeBtn = document.getElementById(`btn-remove-${item.id}`)
+// DISPLAY CARDS IN DECK PAGE
+function printCards() {
 
-  if(!removeBtn){
+    // CHECK CONTAINER DECK IF PRESENT
+  if (!containerDeck) {
     return;
   }
 
-  removeBtn.addEventListener('click' , () =>{
+  // DISPLAY CARDS IN DECK PAGE
+  if (selectCard.length !== 0) {
+    containerDeck.innerHTML = "";
 
- selectFavorite = selectFavorite.filter((el) => el.id === item.id);
-
-
-printFavoriteCards()
-localStorage.setItem('selectFavorite', JSON.stringify(selectFavorite));
-
-  })
+    selectCard.forEach((items) => {
+      containerDeck.innerHTML += `
   
+  
+  
+       <div class="w-[28rem] h-[40rem] rounded-t-[.2rem] rounded-b-[1rem] bg-[var(--bg-pochite)] flex flex-col  items-center">
+                    <div class=" relative w-[100%]  left-6 top-[-2rem]">
+                        <img class="absolute" src=${items.image} alt="">
+                        <p class="z-100 absolute bottom-[-30.9rem] left-20 text-gray-500 font-semibold text-xl">${items.hp}</p>
+                    </div>
+                    <div class="mt-auto p-3 text-3xl z-100">${items.count}</div>
+                </div>
+  
+  
+  
+  
+  
+  `;
+    });
 
+  } else {
+    containerDeck.innerHTML = `
+   <div class=" font-[Sansation]  absolute m-auto inset-0  w-[30rem] flex flex-col items-center justify-center h-full">
+                    <svg width="30rem"  fill="gray" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 640 640"><!--!Font Awesome Free v7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path
+                            d="M155.8 96C123.9 96 96.9 119.4 92.4 150.9L64.6 345.2C64.2 348.2 64 351.2 64 354.3L64 480C64 515.3 92.7 544 128 544L512 544C547.3 544 576 515.3 576 480L576 354.3C576 351.3 575.8 348.2 575.4 345.2L547.6 150.9C543.1 119.4 516.1 96 484.2 96L155.8 96zM155.8 160L484.3 160L511.7 352L451.8 352C439.7 352 428.6 358.8 423.2 369.7L408.9 398.3C403.5 409.1 392.4 416 380.3 416L259.9 416C247.8 416 236.7 409.2 231.3 398.3L217 369.7C211.6 358.9 200.5 352 188.4 352L128.3 352L155.8 160z" />
+                            </svg>
 
-
-
-})
-
-}else{
-
-
-
-
-
-
+                            <p class="text-[gray] text-6xl font-semibold">No Card To Add</p>
+                        </div>
+  `;
+  }
 }
+
+// WHEN I CLICK SHOULD I GET CARD FROM FAVORITE TO DECK
+function favoriteToDeck() {
+  selectFavorite.forEach((el) => {
+    const btnAddCard = document.getElementById(`btn-add-${el.id}`);
+
+  if (btnAddCard)
+  btnAddCard.addEventListener("click", () => {
+
+      // PUT CARDS IN SELECTCARD "ADD TO CARD"
+        const isExits = selectCard.some((item) => item.id === el.id);
+
+        if (!isExits) {
+          selectCard.push({
+            ...el,
+          });
+     
+        } else {
+          return selectCard;
+        }
+        localStorage.setItem("selectCard", JSON.stringify(selectCard));
+        orderCard();
+      
+
+      
+  });
+  })
 }
-
-
-
-
-
-console.log(selectFavorite);

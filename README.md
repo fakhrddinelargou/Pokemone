@@ -32,7 +32,7 @@ This project demonstrates DOM manipulation, localStorage usage, and responsive U
 
 You can view the design prototype and UI layout here:  
 👉 [**View Figma Design**](https://www.figma.com/design/Sjh8dPMj7BshJ0S1gQYB7t/Pokemone?node-id=11-385&t=1b0Je5Il7uxGJMfF-1)  
-_(Replace the link above with your actual Figma project URL)_
+
 
 ---
 
@@ -40,7 +40,7 @@ _(Replace the link above with your actual Figma project URL)_
 
 All planning, task organization, and workflow are documented here:  
 👉 [**View Project Plan**](https://trello.com/invite/b/69008f1977e5bd827268ca7d/ATTI13cc74252992e42e862ec01a504369bdD287C023/cartes)  
-_(Replace with your Notion, Trello, or Google Docs planning link)_
+
 
 ---
 

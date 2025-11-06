@@ -164,6 +164,7 @@ const containerDeck = document.getElementById("container-deck");
 // VARIABLE FOR COPY OF ORIGIN ARRAY
 let productCopy = [];
 
+// document.querySelector('body').classList.add("bg-white")
 // DISPLAY AND HIDDEN MENU
 menu.addEventListener("click", () => {
   cardMenu.classList.toggle("ani");
@@ -207,10 +208,11 @@ products.forEach((item) => {
 });
 
 // CALL FUNCTIONS
+orderCard();
+displayCardsWithPagination() 
 getNameOfCards();
 printFavoriteCards();
 printCards();
-orderCard();
 favoriteToDeck()
 
 // DISPLAY CARDS & SELECTCARD TO DECK AND FAVORITE
@@ -224,29 +226,51 @@ function getNameOfCards(id) {
       (el) => el.power === name || name === "All"
     );
 
-    // USE FILTERPRODUCTS ARRAY  TO DISPLAY CARDS
-    filteredProducts.forEach((items) => {
-      container.innerHTML += `
-    
-             <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
-            
-            <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
-                <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
-             <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+  pagination(filteredProducts)
 
-            </div>
-            <div class="flex  justify-center items-center gap-5">
-                <button id="btn-favorite-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
-                <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
-            </div>
-        </div>
+  //  filteredProducts.forEach((items) => {
+  //     container.innerHTML += `
+    
+  //            <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
             
-            `;
-    });
+  //           <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+  //               <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
+  //            <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+
+  //           </div>
+  //           <div class="flex  justify-center items-center gap-5">
+  //               <button id="btn-favorite-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
+  //               <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+  //           </div>
+  //       </div>
+            
+  //           `;
+  //   });
+   
+    // USE FILTERPRODUCTS ARRAY  TO DISPLAY CARDS
+    // filteredProducts.forEach((items) => {
+    //   container.innerHTML += `
+    
+    //          <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
+            
+    //         <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+    //             <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
+    //          <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+
+    //         </div>
+    //         <div class="flex  justify-center items-center gap-5">
+    //             <button id="btn-favorite-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
+    //             <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+    //         </div>
+    //     </div>
+            
+    //         `;
+    // });
 
     
 //  CALL BUTTON FOR SELECTING CARD & AND PUSH THEM TO ARRAY "SELECTCARD"
     filteredProducts.forEach((item) => {
+      
       const buttons = document.getElementById(`btn-add-${item.id}`);
 
       if (buttons) {
@@ -276,8 +300,11 @@ function getNameOfCards(id) {
 
     //  CALL BUTTON FOR SELECTING FAVORITE CARD & AND PUSH THEM TO ARRAY "SELECTFAVORITE"
     filteredProducts.forEach((item) => {
+      
+      
       const btnFavorite = document.getElementById(`btn-favorite-${item.id}`);
-
+console.log(btnFavorite);
+if(btnFavorite)
       btnFavorite.addEventListener("click", () => {
         const isExits = selectFavorite.some((el) => el.id === item.id);
         if (!isExits) {
@@ -296,6 +323,100 @@ function getNameOfCards(id) {
   } else {
     return;
   }
+}
+
+// PAGINATION WAY
+function pagination(products){
+const containerPaginationBtns = document.getElementById('container-pagination-btns')
+ containerPaginationBtns.innerHTML = ""
+  
+
+const manyCards = Math.ceil(products.length / 9)
+
+// DISPLAY BUTTONS
+if(manyCards >= 2)
+  containerPaginationBtns.classList.remove('hidden') 
+// console.log(products);
+for(let i = 0 ; i < manyCards ; i++){
+containerPaginationBtns.innerHTML += `
+        <button  class=" btn-p bg-gray-500 w-15 h-15 text-2xl rounded-[.4rem]">${i+1}</button>
+`
+}
+const paginationBtns = document.querySelectorAll(".btn-p")
+paginationBtns[0].classList.add('active')
+displayCardsWithPagination(products , 1)
+// console.log(paginationBtns);
+paginationBtns.forEach((btn , index) => {
+btn.addEventListener('click' , () =>{
+  paginationBtns.forEach((sel) =>{
+    sel.classList.remove('active')
+  })
+  btn.classList.add('active')
+  
+  
+    displayCardsWithPagination(products , index + 1)
+
+})
+
+
+})
+
+if(manyCards < 2)
+  containerPaginationBtns.classList.add('hidden') 
+
+
+
+
+
+
+
+
+
+}
+
+function displayCardsWithPagination(el , index){
+
+  console.log(el);
+  
+  console.log(container);
+  
+if(container)
+  container.innerHTML = ""
+  // if(!el && !index) return;
+  
+  
+const start = (index - 1) * 9
+const end = index * 9
+
+  for(let i = start ; i  < end ; i++){
+    
+    console.log(i);
+    if(el[i]){
+
+  
+
+container.innerHTML += `
+    
+             <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
+            
+            <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+                <img class="w-full max-[400px]:w-[100%] " src=${el[i].image} alt="card-1">
+             <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${el[i].hp}</p> 
+
+            </div>
+            <div class="flex  justify-center items-center gap-5">
+                <button id="btn-favorite-${el[i].id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
+                <button id="btn-add-${el[i].id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+            </div>
+        </div>
+            
+          ` 
+}
+
+}
+
+
+
 }
 
 // DISPLAY SELECTCARD IN CARD "CNTAINER"

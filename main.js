@@ -170,19 +170,17 @@ menu.addEventListener("click", () => {
   cardMenu.classList.toggle("ani");
 });
 
-// HIDDEN OR DISPLAY ORDER CARDS WHAN  SELECTCARD EMPTY 
+// HIDDEN OR DISPLAY ORDER CARDS WHAN  SELECTCARD EMPTY
 if (order) {
   order.addEventListener("click", () => {
     if (selectCard.length > 0) card.classList.toggle("hidden");
   });
 } else {
-
 }
 
 // DISPLAY TYPES
 if (typeOfCard) {
   types.forEach((type) => {
-
     typeOfCard.insertAdjacentHTML(
       "beforeend",
       `<li id="${type}" class="border-b border-transparent border-b-2 hover:border-white hover:border-b-2 duration-200">${type}</li>`
@@ -209,11 +207,11 @@ products.forEach((item) => {
 
 // CALL FUNCTIONS
 orderCard();
-displayCardsWithPagination() 
+displayCardsWithPagination();
 getNameOfCards();
 printFavoriteCards();
 printCards();
-favoriteToDeck()
+favoriteToDeck();
 
 // DISPLAY CARDS & SELECTCARD TO DECK AND FAVORITE
 function getNameOfCards(id) {
@@ -226,36 +224,36 @@ function getNameOfCards(id) {
       (el) => el.power === name || name === "All"
     );
 
-  pagination(filteredProducts)
+    pagination(filteredProducts);
 
-  //  filteredProducts.forEach((items) => {
-  //     container.innerHTML += `
-    
-  //            <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
-            
-  //           <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
-  //               <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
-  //            <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+    //  filteredProducts.forEach((items) => {
+    //     container.innerHTML += `
 
-  //           </div>
-  //           <div class="flex  justify-center items-center gap-5">
-  //               <button id="btn-favorite-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
-  //               <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
-  //           </div>
-  //       </div>
-            
-  //           `;
-  //   });
-   
+    //            <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
+
+    //           <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+    //               <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
+    //            <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p>
+
+    //           </div>
+    //           <div class="flex  justify-center items-center gap-5">
+    //               <button id="btn-favorite-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
+    //               <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+    //           </div>
+    //       </div>
+
+    //           `;
+    //   });
+
     // USE FILTERPRODUCTS ARRAY  TO DISPLAY CARDS
     // filteredProducts.forEach((items) => {
     //   container.innerHTML += `
-    
+
     //          <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
-            
+
     //         <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
     //             <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
-    //          <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+    //          <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p>
 
     //         </div>
     //         <div class="flex  justify-center items-center gap-5">
@@ -263,14 +261,12 @@ function getNameOfCards(id) {
     //             <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
     //         </div>
     //     </div>
-            
+
     //         `;
     // });
 
-    
-//  CALL BUTTON FOR SELECTING CARD & AND PUSH THEM TO ARRAY "SELECTCARD"
+    //  CALL BUTTON FOR SELECTING CARD & AND PUSH THEM TO ARRAY "SELECTCARD"
     filteredProducts.forEach((item) => {
-      
       const buttons = document.getElementById(`btn-add-${item.id}`);
 
       if (buttons) {
@@ -300,25 +296,25 @@ function getNameOfCards(id) {
 
     //  CALL BUTTON FOR SELECTING FAVORITE CARD & AND PUSH THEM TO ARRAY "SELECTFAVORITE"
     filteredProducts.forEach((item) => {
-      
-      
       const btnFavorite = document.getElementById(`btn-favorite-${item.id}`);
-console.log(btnFavorite);
-if(btnFavorite)
-      btnFavorite.addEventListener("click", () => {
-        const isExits = selectFavorite.some((el) => el.id === item.id);
-        if (!isExits) {
-          selectFavorite.push({
-            ...item,
-          });
-        } else {
-          return selectFavorite;
-        }
-        printFavoriteCards();
+      // console.log(btnFavorite);
+      if (btnFavorite)
+        btnFavorite.addEventListener("click", () => {
+          const isExits = selectFavorite.some((el) => el.id === item.id);
+          if (!isExits) {
+            selectFavorite.push({
+              ...item,
+            });
+          } else {
+            return selectFavorite;
+          }
+          printFavoriteCards();
 
-        localStorage.setItem("selectFavorite", JSON.stringify(selectFavorite));
-      });
-    
+          localStorage.setItem(
+            "selectFavorite",
+            JSON.stringify(selectFavorite)
+          );
+        });
     });
   } else {
     return;
@@ -326,76 +322,57 @@ if(btnFavorite)
 }
 
 // PAGINATION WAY
-function pagination(products){
-const containerPaginationBtns = document.getElementById('container-pagination-btns')
- containerPaginationBtns.innerHTML = ""
-  
+function pagination(products) {
+  const containerPaginationBtns = document.getElementById(
+    "container-pagination-btns"
+  );
+  containerPaginationBtns.innerHTML = "";
 
-const manyCards = Math.ceil(products.length / 9)
+  const manyCards = Math.ceil(products.length / 9);
 
-// DISPLAY BUTTONS
-if(manyCards >= 2)
-  containerPaginationBtns.classList.remove('hidden') 
-// console.log(products);
-for(let i = 0 ; i < manyCards ; i++){
-containerPaginationBtns.innerHTML += `
-        <button  class=" btn-p bg-gray-500 w-15 h-15 text-2xl rounded-[.4rem]">${i+1}</button>
-`
-}
-const paginationBtns = document.querySelectorAll(".btn-p")
-paginationBtns[0].classList.add('active')
-displayCardsWithPagination(products , 1)
-// console.log(paginationBtns);
-paginationBtns.forEach((btn , index) => {
-btn.addEventListener('click' , () =>{
-  paginationBtns.forEach((sel) =>{
-    sel.classList.remove('active')
-  })
-  btn.classList.add('active')
-  
-  
-    displayCardsWithPagination(products , index + 1)
+  // DISPLAY BUTTONS
+  if (manyCards >= 2) containerPaginationBtns.classList.remove("hidden");
+  // console.log(products);
+  for (let i = 0; i < manyCards; i++) {
+    containerPaginationBtns.innerHTML += `
+        <button  class=" btn-p bg-gray-500 w-15 h-15 text-2xl rounded-[.4rem]">${
+          i + 1
+        }</button>
+`;
+  }
+  const paginationBtns = document.querySelectorAll(".btn-p");
+  paginationBtns[0].classList.add("active");
+  displayCardsWithPagination(products, 1);
+  // console.log(paginationBtns);
+  paginationBtns.forEach((btn, index) => {
+    btn.addEventListener("click", () => {
+      paginationBtns.forEach((sel) => {
+        sel.classList.remove("active");
+      });
+      btn.classList.add("active");
 
-})
+      displayCardsWithPagination(products, index + 1);
+    });
+  });
 
-
-})
-
-if(manyCards < 2)
-  containerPaginationBtns.classList.add('hidden') 
-
-
-
-
-
-
-
-
-
+  if (manyCards < 2) containerPaginationBtns.classList.add("hidden");
 }
 
-function displayCardsWithPagination(el , index){
+function displayCardsWithPagination(el, index) {
+  // console.log(el);
 
-  console.log(el);
-  
-  console.log(container);
-  
-if(container)
-  container.innerHTML = ""
+  // console.log(container);
+
+  if (container) container.innerHTML = "";
   // if(!el && !index) return;
-  
-  
-const start = (index - 1) * 9
-const end = index * 9
 
-  for(let i = start ; i  < end ; i++){
-    
-    console.log(i);
-    if(el[i]){
+  const start = (index - 1) * 9;
+  const end = index * 9;
 
-  
-
-container.innerHTML += `
+  for (let i = start; i < end; i++) {
+    // console.log(i);
+    if (el[i]) {
+      container.innerHTML += `
     
              <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
             
@@ -410,13 +387,9 @@ container.innerHTML += `
             </div>
         </div>
             
-          ` 
-}
-
-}
-
-
-
+          `;
+    }
+  }
 }
 
 // DISPLAY SELECTCARD IN CARD "CNTAINER"
@@ -459,19 +432,19 @@ function orderCard() {
       plusCard(item);
       minusCard(item);
     });
-// HIDDEN AUTOMATIQUELLY ORDER CARDS WHAN  SELECTCARD EMPTY 
+    // HIDDEN AUTOMATIQUELLY ORDER CARDS WHAN  SELECTCARD EMPTY
     if (selectCard.length <= 0) {
       card.classList.add("hidden");
     }
-    // PUT MANY CARDS WE HAVE TO COUNTCARDS 
+    // PUT MANY CARDS WE HAVE TO COUNTCARDS
     document.getElementById("countCards").innerHTML = selectCard.length;
     localStorage.setItem("selectCard", JSON.stringify(selectCard));
   }
 }
 
-// CONTROL PLUS BUTTON 
+// CONTROL PLUS BUTTON
 function plusCard(item) {
-  // GET ALL PLUS BUTTONS 
+  // GET ALL PLUS BUTTONS
   const btnPlus = document.getElementById(`plus-${item.id}`);
 
   btnPlus.addEventListener("click", () => {
@@ -495,7 +468,7 @@ function plusCard(item) {
 
 // CONTROL MINUS BUTTON
 function minusCard(item) {
-  // GET ALL MINUS BUTTONS 
+  // GET ALL MINUS BUTTONS
   const btnMinus = document.getElementById(`minus-${item.id}`);
 
   btnMinus.addEventListener("click", () => {
@@ -513,7 +486,7 @@ function minusCard(item) {
         return el;
       }
     });
-    // GET ALL PLUS BUTTONS 
+    // GET ALL PLUS BUTTONS
     orderCard();
     removeCardFromOrder();
   });
@@ -526,12 +499,11 @@ function removeCardFromOrder() {
   orderCard();
 }
 
-// DISPLAY FAVORITE CARDS 
+// DISPLAY FAVORITE CARDS
 function printFavoriteCards() {
-
   // GET ALL ELEMENT FROM FAVORITE FUNCTION TO DECK FUNCTION
-favoriteToDeck();
-  
+  favoriteToDeck();
+
   // CHECK CONTAINER FAVORITE IF PRESENT
   if (!containerFavorite) {
     return;
@@ -539,7 +511,6 @@ favoriteToDeck();
 
   // CHECK MANY FAVORITE CARDS
   if (selectFavorite.length !== 0) {
-
     containerFavorite.innerHTML = "";
 
     // DISPLAY ALL FAVORITE CARDS
@@ -572,10 +543,10 @@ favoriteToDeck();
   `;
     });
 
-// REMOVE CARD FROM FAVORIRE
+    // REMOVE CARD FROM FAVORIRE
     selectFavorite.forEach((item) => {
       const removeBtn = document.getElementById(`btn-remove-${item.id}`);
-        // CHECK REMOVE BUTTON IF PRESENT
+      // CHECK REMOVE BUTTON IF PRESENT
       if (!removeBtn) {
         return;
       }
@@ -585,9 +556,7 @@ favoriteToDeck();
         localStorage.setItem("selectFavorite", JSON.stringify(selectFavorite));
       });
     });
-
   } else {
-
     containerFavorite.innerHTML = `
    <div class=" font-[Sansation]  absolute m-auto inset-0  w-[30rem] flex flex-col items-center justify-center h-full">
                     <svg width="30rem"  fill="gray" xmlns="http://www.w3.org/2000/svg"
@@ -603,8 +572,7 @@ favoriteToDeck();
 
 // DISPLAY CARDS IN DECK PAGE
 function printCards() {
-
-    // CHECK CONTAINER DECK IF PRESENT
+  // CHECK CONTAINER DECK IF PRESENT
   if (!containerDeck) {
     return;
   }
@@ -632,7 +600,6 @@ function printCards() {
   
   `;
     });
-
   } else {
     containerDeck.innerHTML = `
    <div class=" font-[Sansation]  absolute m-auto inset-0  w-[30rem] flex flex-col items-center justify-center h-full">
@@ -652,25 +619,20 @@ function favoriteToDeck() {
   selectFavorite.forEach((el) => {
     const btnAddCard = document.getElementById(`btn-add-${el.id}`);
 
-  if (btnAddCard)
-  btnAddCard.addEventListener("click", () => {
-
-      // PUT CARDS IN SELECTCARD "ADD TO CARD"
+    if (btnAddCard)
+      btnAddCard.addEventListener("click", () => {
+        // PUT CARDS IN SELECTCARD "ADD TO CARD"
         const isExits = selectCard.some((item) => item.id === el.id);
 
         if (!isExits) {
           selectCard.push({
             ...el,
           });
-     
         } else {
           return selectCard;
         }
         localStorage.setItem("selectCard", JSON.stringify(selectCard));
         orderCard();
-      
-
-      
+      });
   });
-  })
 }

@@ -8,7 +8,7 @@
 }
 
 :root {
-  --bg-pochite: #5e5e5e70;
+  --bg-pochite: #53535325;
   --color1: rgb(0, 231, 255);
   --color2: rgb(255, 0, 231);
   --back: url(https://cdn2.bulbagarden.net/upload/1/17/Cardback.jpg);
@@ -345,7 +345,7 @@
   background-color: white;
   border-radius: 100px;
   font-weight: 600;
-  color: #1f387e;
+  color: #1f387e !important;
   box-shadow: 0 0 0 2px #ffffff;
   cursor: pointer;
   overflow: hidden;
@@ -425,5 +425,344 @@
 
 .active {
   background: rgb(74, 74, 90) !important;
+  
 }
+
+/* From Uiverse.io by kandalgaonkarshubham */ 
+.bg  {
+  position: absolute;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+      )
+      21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3539 24%,
+        rgba(240, 166, 17, 0) 0
+      )
+      19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+      #282828;
+  background-size: 40px 60px;
+}
+
+.head-home{
+ background: #00000053;
+
+}
+
+body  {
+  
+  
+  
+  background: radial-gradient(
+        circle farthest-side at 0% 50%,
+        #282828 23.5%,
+        rgba(255, 170, 0, 0) 0
+      )
+      21px 30px,
+    radial-gradient(
+        circle farthest-side at 0% 50%,
+        #2c3539 24%,
+        rgba(240, 166, 17, 0) 0
+      )
+      19px 30px,
+    linear-gradient(
+        #282828 14%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 85%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        150deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(
+        30deg,
+        #282828 24%,
+        #2c3539 0,
+        #2c3539 26%,
+        rgba(240, 166, 17, 0) 0,
+        rgba(240, 166, 17, 0) 74%,
+        #2c3539 0,
+        #2c3539 76%,
+        #282828 0
+      )
+      0 0,
+    linear-gradient(90deg, #2c3539 2%, #282828 0, #282828 98%, #2c3539 0%) 0 0
+      #282828;
+  background-size: 40px 60px;
+}
+
+/* From Uiverse.io by JaydipPrajapati1910 */ 
+.button {
+  cursor: pointer;
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 0.5px;
+font-weight: 500;
+  --width: 90px;
+  --height: 30px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: transparent;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 2rem;
+  /* font-family: "Arial"; */
+  transition: background 0.3s;
+  border: 1px solid rgb(214, 213, 213);
+}
+
+.button::before {
+  
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: rgb(9, 9, 33);
+  font-size: 0.9rem;
+  color: #fff;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 10px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.button::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: rgb(9, 9, 33);
+  left: calc(50% - 10px);
+  bottom: calc(100% + var(--gap-between-tooltip-to-button) - 10px);
+}
+
+.button::after,.button::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper,.text,.icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0
+}
+
+.text,.icon {
+  transition: top 0.5s;
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.button:hover {
+  background: #222;
+}
+
+.button:hover .text {
+  top: -100%;
+}
+
+.button:hover .icon {
+  top: 0;
+}
+
+.button:hover:before,.button:hover:after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.button:hover:after {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) - 20px);
+}
+
+.button:hover:before {
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button));
+}
+
+
+
+/* From Uiverse.io by zjssun */ 
+.button1 {
+  position: relative;
+  width: 9rem;
+  height: 30px;
+  border-radius: 2rem;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #7d2ae8;
+  transition: all 0.2s ease;
+}
+
+.button1:active {
+  transform: scale(0.96);
+}
+
+.button1:before,
+.button1:after {
+  position: absolute;
+  content: "";
+  width: 150%;
+  left: 50%;
+  height: 100%;
+  transform: translateX(-50%);
+  z-index: -1000;
+  background-repeat: no-repeat;
+}
+
+.button1:hover:before {
+  top: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 20%, #7d2ae8 20%, transparent 30%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%,
+    10% 10%, 18% 18%;
+  background-position: 50% 120%;
+  animation: greentopBubbles 0.6s ease;
+}
+
+@keyframes greentopBubbles {
+  0% {
+    background-position: 5% 90%, 10% 90%, 10% 90%, 15% 90%, 25% 90%, 25% 90%,
+      40% 90%, 55% 90%, 70% 90%;
+  }
+
+  50% {
+    background-position: 0% 80%, 0% 20%, 10% 40%, 20% 0%, 30% 30%, 22% 50%,
+      50% 50%, 65% 20%, 90% 30%;
+  }
+
+  100% {
+    background-position: 0% 70%, 0% 10%, 10% 30%, 20% -10%, 30% 20%, 22% 40%,
+      50% 40%, 65% 10%, 90% 20%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+.button1:hover::after {
+  bottom: -70%;
+  background-image: radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, transparent 10%, #7d2ae8 15%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%),
+    radial-gradient(circle, #7d2ae8 20%, transparent 20%);
+  background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 20% 20%, 18% 18%;
+  background-position: 50% 0%;
+  animation: greenbottomBubbles 0.6s ease;
+}
+
+@keyframes greenbottomBubbles {
+  0% {
+    background-position: 10% -10%, 30% 10%, 55% -10%, 70% -10%, 85% -10%,
+      70% -10%, 70% 0%;
+  }
+
+  50% {
+    background-position: 0% 80%, 20% 80%, 45% 60%, 60% 100%, 75% 70%, 95% 60%,
+      105% 0%;
+  }
+
+  100% {
+    background-position: 0% 90%, 20% 90%, 45% 70%, 60% 110%, 75% 80%, 95% 70%,
+      110% 10%;
+    background-size: 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+  }
+}
+
+
+.styleMenu{
+  background:  black;
+  border-radius: 50%;
+  right: .5rem ;
+  top: 0;
+  position: absolute;
+  transition: .5s;
+background: #0000008f;
+}
+
 

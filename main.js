@@ -1,11 +1,24 @@
 const products = [
-  {
+    {
     id: "01",
+    image: "/images/card.png",
+    name: "Ivysaur",
+    price: 149,
+    power: "Grass",
+    hp: 1071,
+    attack: 120,
+    defense: 100,
+    count: 1,
+  },
+  {
+    id: "17",
     image: "/images/card-1.png",
     name: "Ivysaur",
     price: 149,
     power: "Grass",
-    hp: 1632,
+    hp: 1600,
+    attack: 150,
+    defense: 120,
     count: 1,
   },
   {
@@ -14,7 +27,9 @@ const products = [
     name: "Venusaur",
     price: 149,
     power: "Grass",
-    hp: 2580,
+    hp: 2500,
+    attack: 200,
+    defense: 160,
     count: 1,
   },
   {
@@ -23,7 +38,9 @@ const products = [
     name: "Charmander",
     price: 149,
     power: "Fire",
-    hp: 955,
+    hp: 950,
+    attack: 90,
+    defense: 70,
     count: 1,
   },
   {
@@ -32,7 +49,9 @@ const products = [
     name: "Charmeleon",
     price: 149,
     power: "Fire",
-    hp: 1557,
+    hp: 1550,
+    attack: 140,
+    defense: 100,
     count: 1,
   },
   {
@@ -41,7 +60,9 @@ const products = [
     name: "Charizard",
     price: 149,
     power: "Fire",
-    hp: 2602,
+    hp: 2600,
+    attack: 200,
+    defense: 160,
     count: 1,
   },
   {
@@ -50,7 +71,9 @@ const products = [
     name: "Squirtle",
     price: 199,
     power: "Water",
-    hp: 1008,
+    hp: 1000,
+    attack: 100,
+    defense: 80,
     count: 1,
   },
   {
@@ -59,7 +82,9 @@ const products = [
     name: "Wartortle",
     price: 199,
     power: "Water",
-    hp: 1582,
+    hp: 1580,
+    attack: 140,
+    defense: 120,
     count: 1,
   },
   {
@@ -68,7 +93,9 @@ const products = [
     name: "Blastoise",
     price: 199,
     power: "Water",
-    hp: 2542,
+    hp: 2540,
+    attack: 200,
+    defense: 160,
     count: 1,
   },
   {
@@ -77,7 +104,9 @@ const products = [
     name: "Caterpie",
     price: 199,
     power: "Bug",
-    hp: 443,
+    hp: 440,
+    attack: 50,
+    defense: 40,
     count: 1,
   },
   {
@@ -86,7 +115,9 @@ const products = [
     name: "Metapod",
     price: 199,
     power: "Bug",
-    hp: 477,
+    hp: 475,
+    attack: 60,
+    defense: 50,
     count: 1,
   },
   {
@@ -95,7 +126,9 @@ const products = [
     name: "Butterfree",
     price: 129,
     power: "Bug",
-    hp: 1454,
+    hp: 1450,
+    attack: 130,
+    defense: 100,
     count: 1,
   },
   {
@@ -104,7 +137,9 @@ const products = [
     name: "Weedle",
     price: 129,
     power: "Bug",
-    hp: 449,
+    hp: 450,
+    attack: 50,
+    defense: 40,
     count: 1,
   },
   {
@@ -113,7 +148,9 @@ const products = [
     name: "Kakuna",
     price: 129,
     power: "Bug",
-    hp: 485,
+    hp: 480,
+    attack: 60,
+    defense: 50,
     count: 1,
   },
   {
@@ -122,7 +159,9 @@ const products = [
     name: "Beedrill",
     price: 129,
     power: "Bug",
-    hp: 1439,
+    hp: 1440,
+    attack: 130,
+    defense: 100,
     count: 1,
   },
   {
@@ -131,7 +170,9 @@ const products = [
     name: "Pidgey",
     price: 129,
     power: "Normal",
-    hp: 679,
+    hp: 680,
+    attack: 80,
+    defense: 60,
     count: 1,
   },
   {
@@ -140,11 +181,14 @@ const products = [
     name: "Pidgeotto",
     price: 99,
     power: "Normal",
-    hp: 1223,
+    hp: 1220,
+    attack: 120,
+    defense: 90,
     count: 1,
   },
-];
 
+];
+localStorage.setItem("products" ,JSON.stringify(products))
 //VARIABLE FOR TYPE OF POWER
 const typeOfCard = document.getElementById("type-of-cards");
 const types = ["Grass", "Fire", "Water", "Bug", "Normal", "All"];
@@ -168,6 +212,7 @@ let productCopy = [];
 // DISPLAY AND HIDDEN MENU
 menu.addEventListener("click", () => {
   cardMenu.classList.toggle("ani");
+  menu.classList.toggle("styleMenu")
 });
 
 // HIDDEN OR DISPLAY ORDER CARDS WHAN  SELECTCARD EMPTY
@@ -206,8 +251,8 @@ products.forEach((item) => {
 });
 
 // CALL FUNCTIONS
-orderCard();
 displayCardsWithPagination();
+orderCard();
 getNameOfCards();
 printFavoriteCards();
 printCards();
@@ -374,16 +419,43 @@ function displayCardsWithPagination(el, index) {
     if (el[i]) {
       container.innerHTML += `
     
-             <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
+             <div class=" flex flex-col  gap-[1rem] mb-15 max-[400px]:w-[100%] ">
             
-            <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
-                <img class="w-full max-[400px]:w-[100%] " src=${el[i].image} alt="card-1">
-             <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${el[i].hp}</p> 
+            <div class="flex items-end justify-center relative w-[20rem] h-auto   max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+                <img  class="z-0 w-full max-[400px]:w-[100%] " src=${el[i].image} alt="card-1">
+           <div class=" absolute bottom-0 left-5  flex flex-col gap-2 text-[#1F2937]  w-full h-[12.5rem]  w-[92%] pl-4 pt-4">
+           
+           <div class="flex items-center gap-5"> <p class="font-bold text-[1.3rem] max-[450px]:text-[2rem]">${el[i].name}</p> <span class="flex items-center bg-[#374151] text-white rounded-[2rem] px-2 h-7 text-[.9rem] max-[450px]:text-[1rem]">${el[i].power}</span> </div>
+<div class="font-semibold text-[#6B7280] max-[450px]:text-[1.5rem] ">Seed Pokémon</div>
+<div class="flex gap-2">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${el[i].attack}</span></div>
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${el[i].defense}</span></div>
+</div>
+<div class="flex items-center gap-7">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${el[i].hp}</span></div>
+<p class="font-bold text-[1.3rem] underline">${el[i].price}$</p>
+</div>
+
+           </div>
 
             </div>
             <div class="flex  justify-center items-center gap-5">
-                <button id="btn-favorite-${el[i].id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Favorite</button>
-                <button id="btn-add-${el[i].id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+            
+            
+            <button id="btn-favorite-${el[i].id}" class="button1 flex  items-center justify-center gap-2">
+  <span class="text-2xl">+</span> Favorite
+</button>
+            <!-- From Uiverse.io by JaydipPrajapati1910 --> 
+<div  id="btn-add-${el[i].id}"  data-tooltip="Price: $${el[i].price}" class="button">
+<div class="button-wrapper">
+<div  class="text">Buy Now</div>
+<span class="icon">
+  <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+</svg>
+</span>
+</div>
+</div>
             </div>
         </div>
             
@@ -395,7 +467,7 @@ function displayCardsWithPagination(el, index) {
 // DISPLAY SELECTCARD IN CARD "CNTAINER"
 function orderCard() {
   // MAKE SURE IF CARD IS PRESENT
-  if (card !== null) {
+  if (card !== null ) {
     card.innerHTML = "";
 
     // DISPLAY ALL CARDS
@@ -519,16 +591,42 @@ function printFavoriteCards() {
   
   
   
-          <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
+                <div class="flex flex-col gap-[1rem] mb-15 max-[400px]:w-[100%] ">
             
-            <div class=" relative w-[20rem]  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
-                <img class="w-full max-[400px]:w-[100%] " src=${items.image} alt="card-1">
-             <p class="absolute left-16 max-[400px]:left-24c max-lg:left-15 bottom-[5.3rem] max-[400px]:bottom-[8.3rem] max-lg:bottom-[4.75rem] font-semibold text-gray-600 text-[.9rem] max-[400px]:text-[1.4rem] ">${items.hp}</p> 
+            <div class="flex   items-end justify-center relative w-[20rem] h-[30rem] bg-red-500  max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+                <img  class="z-0 w-full max-[400px]:w-[100%] absolute" src=${items.image} alt="card-1">
+           <div class="flex flex-col gap-2 text-[#1F2937] relative w-full h-[12.5rem]  w-[92%] pl-4 pt-4">
+           
+           <div class="flex items-center gap-5"> <p class="font-bold text-[1.3rem]">${items.name}</p> <span class="flex items-center bg-[#374151] text-white rounded-[2rem] px-2 h-7 text-[.9rem]">${items.power}</span> </div>
+<div class="font-semibold text-[#6B7280]">Seed Pokémon</div>
+<div class="flex gap-2">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.attack}</span></div>
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.defense}</span></div>
+</div>
+<div class="flex items-center gap-7">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.hp}</span></div>
+<p class="font-bold text-[1.3rem] underline">${items.price}$</p>
+</div>
+
+           </div>
 
             </div>
             <div class="flex  justify-center items-center gap-5">
                 <button id="btn-remove-${items.id}" class=" border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[8px] max-[400px]:text-[15px] max-[570px]:w-[7rem] h-12 max-[400px]:h-16  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Remove</button>
-                <button id="btn-add-${items.id}"  class="  border border-[#D9D9D9] tracking-[1px] text-gray-300 rounded-[2rem] text-[10px] max-[570px]:text-[7px] h-12 max-[400px]:h-16 max-[570px]:w-[7rem] max-[400px]:text-[15px]  w-[9rem] font-medium cursor-pointer max-[400px]:w-[100%] ">Add To Card</button>
+
+                <!-- From Uiverse.io by JaydipPrajapati1910 --> 
+<div id="btn-add-${items.id}" data-tooltip="Price: $${items.price}" class="button">
+<div class="button-wrapper">
+  <div class="text">Buy Now</div>
+    <span class="icon">
+      <svg viewBox="0 0 16 16" class="bi bi-cart2" fill="currentColor" height="16" width="16" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"></path>
+</svg>
+    </span>
+  </div>
+</div>
+
+
             </div>
         </div>
   
@@ -586,12 +684,26 @@ function printCards() {
   
   
   
-       <div class="w-[28rem] h-[40rem] rounded-t-[.2rem] rounded-b-[1rem] bg-[var(--bg-pochite)] flex flex-col  items-center">
-                    <div class=" relative w-[100%]  left-6 top-[-2rem]">
-                        <img class="absolute" src=${items.image} alt="">
-                        <p class="z-100 absolute bottom-[-30.9rem] left-20 text-gray-500 font-semibold text-xl">${items.hp}</p>
-                    </div>
-                    <div class="mt-auto p-3 text-3xl z-100">${items.count}</div>
+       <div class=" px-5 rounded-t-[.2rem] rounded-b-[1rem] bg-[var(--bg-pochite)] flex flex-col  items-center">
+                       <div class="flex   items-end justify-center relative top-[-1rem] w-[20rem] h-[30rem]   max-lg:w-[18rem] max-[400px]:w-[100%]   ">
+                <img  class="z-0 w-full max-[400px]:w-[100%] absolute" src=${items.image} alt="card-1">
+           <div class="flex flex-col gap-2 text-[#1F2937] relative w-full h-[12.5rem]  w-[92%] pl-4 pt-4">
+           
+           <div class="flex items-center gap-5"> <p class="font-bold text-[1.3rem]">${items.name}</p> <span class="flex items-center bg-[#374151] text-white rounded-[2rem] px-2 h-7 text-[.9rem]">${items.power}</span> </div>
+<div class="font-semibold text-[#6B7280]">Seed Pokémon</div>
+<div class="flex gap-2">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.attack}</span></div>
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.defense}</span></div>
+</div>
+<div class="flex items-center gap-7">
+<div class="h-7 w-18 rounded-[.4rem] flex items-center justify-center gap-1 font-semibold bg-white ">HP <span>${items.hp}</span></div>
+<p class="font-bold text-[1.3rem] underline">${items.price}$</p>
+</div>
+
+           </div>
+
+            </div>
+                    <div class="mt-auto p-1 text-3xl z-100">${items.count}</div>
                 </div>
   
   
@@ -636,3 +748,5 @@ function favoriteToDeck() {
       });
   });
 }
+
+
